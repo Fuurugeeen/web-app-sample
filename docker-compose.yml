@@ -3,14 +3,33 @@ version: '3'
 services:
   db:
     image: postgres
+    restart: always
     volumes:
       - db_data:/var/lib/postgresql/data
     environment:
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: example
+      POSTGRES_DB: my_database
+    ports:
+      - "5432:5432"
+
   adminer:
-    image: adminer # DB管理ツール
+    image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - "8080:8080"
+
+  backend:
+    build: ./backend
+    ports:
+      - "5001:5001"
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/app
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgres://postgres:example@db:5432/my_database
+
 volumes:
   db_data:
