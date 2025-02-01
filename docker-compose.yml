@@ -27,6 +27,7 @@ services:
       - db
     volumes:
       - ./backend:/app
+      - /app/node_modules  # node_modules を上書きしないようにする
     environment:
       - NODE_ENV=development
       - DATABASE_URL=postgres://postgres:example@db:5432/my_database

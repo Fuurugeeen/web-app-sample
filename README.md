@@ -7,6 +7,7 @@ docker使うがローカルにもインストール。IDE補完やLinterで使�
 `npm -v   # npm のバージョン確認`
 backend フォルダで npm をインストール
 `npm install`
+`npm install --save-dev nodemon`
 
 # 各種コマンド
 - colima の起動、停止
@@ -41,6 +42,10 @@ backend フォルダで npm をインストール
 
 - ターミナルから api実行
 `curl http://localhost:5001/api`
+
+- 修正反映方法
+nodemon で自動反映。
+または コンテナを再起動して反映 `docker-compose restart backend`
 
 # コンテナ名、ポート
 機能	コンテナ名	ポート
