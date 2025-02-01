@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: example
+  adminer:
+    image: adminer # DB管理ツール
+    restart: always
+    ports:
+      - 8080:8080
+volumes:
+  db_data:
