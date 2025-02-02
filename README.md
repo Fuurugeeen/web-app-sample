@@ -43,6 +43,9 @@ backend フォルダで npm をインストール
 - ターミナルから api実行
 `curl http://localhost:5001/api`
 
+- console.log の確認方法
+`docker logs -f web-app-sample-backend-1`
+
 - 修正反映方法
 nodemon で自動反映。
 または コンテナを再起動して反映 `docker-compose restart backend`
@@ -52,3 +55,11 @@ nodemon で自動反映。
 PostgreSQL (DB)	db	5432
 Adminer (DB管理)	adminer	8080
 Express (APIサーバー)	backend	5001
+
+
+# API実行
+curl http://localhost:5001/api/users
+
+curl -X POST http://localhost:5001/api/users \
+  -H "Content-Type: application/json" \
+  -d '{"id": 1, "name": "sample"}'
